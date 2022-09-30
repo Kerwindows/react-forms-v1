@@ -8,7 +8,8 @@ function App() {
     setName(event.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
     setSubmittedName(name);
   };
   return (
@@ -21,8 +22,10 @@ function App() {
           ? `"${submittedName}" was submitted successfully.`
           : null}
       </p>
-      <input onChange={getName} type="text" placeholder="What's your name?" />
-      <button onClick={handleSubmit}>Submit</button>
+      <form onClick={handleSubmit}>
+        <input onChange={getName} type="text" placeholder="What's your name?" />
+        <button>Submit</button>
+      </form>
     </div>
   );
 }
